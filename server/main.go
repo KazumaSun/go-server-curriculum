@@ -1,6 +1,7 @@
 package main
 
 import (
+	"go-server-curriculum/handler"
 	"log"
 
 	"github.com/labstack/echo/v4"
@@ -22,11 +23,13 @@ func main() {
 	// orderUsecase := usecase.NewOrderUsecase(orderRepo)
 
 	// // ハンドラー初期化
+	 healthHandler := handler.NewHealthHandler()
 	// productHandler := handler.NewProductHandler(productUsecase)
 	// orderHandler := handler.NewOrderHandler(orderUsecase)
 
 	// Echoルーター設定
 	e := echo.New()
+	e.GET("/", healthHandler.HealthCheck)
 	// e.GET("/products", productHandler.GetProducts)
 	// e.GET("/products/:id", productHandler.GetProduct)
 	// e.GET("/orders", orderHandler.GetOrders)
