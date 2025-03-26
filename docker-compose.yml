@@ -5,6 +5,11 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
+    environment:
+      - DB_HOST=db
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_NAME=ecommerce
     ports:
       - "8080:8080"
     volumes:
