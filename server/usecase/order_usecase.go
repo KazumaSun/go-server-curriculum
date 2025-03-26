@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"go-server-curriculum/server/domain"
-	"go-server-curriculum/server/repository"
+	"go-server-curriculum/domain"
+	"go-server-curriculum/repository"
 )
 
 type OrderUsecase struct {

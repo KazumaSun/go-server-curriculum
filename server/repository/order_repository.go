@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"go-server-curriculum/server/domain"
+	"go-server-curriculum/domain"
 
 	"gorm.io/gorm"
 )

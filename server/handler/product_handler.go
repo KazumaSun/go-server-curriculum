@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"go-server-curriculum/server/usecase"
+	"go-server-curriculum/usecase"
 
 	"github.com/gorilla/mux"
 	"github.com/labstack/echo/v4"
