@@ -2,6 +2,9 @@ package main
 
 import (
 	"go-server-curriculum/handler"
+	"go-server-curriculum/infrastructure"
+	"go-server-curriculum/repository"
+	"go-server-curriculum/usecase"
 	"log"
 
 	"github.com/labstack/echo/v4"
@@ -9,28 +12,28 @@ import (
 
 func main() {
 	// DB 初期化
-	// db, err := infrastructure.NewMySQLDB()
-	// if err != nil {
-	// 	log.Fatalf("failed to connect to database: %v", err)
-	// }
+	db, err := infrastructure.NewMySQLDB()
+	if err != nil {
+		log.Fatalf("failed to connect to database: %v", err)
+	}
 
 	// // リポジトリ初期化
-	// productRepo := repository.NewProductRepository(db)
+	productRepo := repository.NewProductRepository(db)
 	// orderRepo := repository.NewOrderRepository(db)
 
 	// // ユースケース初期化
-	// productUsecase := usecase.NewProductUsecase(productRepo)
+	productUsecase := usecase.NewProductUsecase(productRepo)
 	// orderUsecase := usecase.NewOrderUsecase(orderRepo)
 
 	// // ハンドラー初期化
-	 healthHandler := handler.NewHealthHandler()
-	// productHandler := handler.NewProductHandler(productUsecase)
+	healthHandler := handler.NewHealthHandler()
+	productHandler := handler.NewProductHandler(productUsecase)
 	// orderHandler := handler.NewOrderHandler(orderUsecase)
 
 	// Echoルーター設定
 	e := echo.New()
 	e.GET("/", healthHandler.HealthCheck)
-	// e.GET("/products", productHandler.GetProducts)
+	e.GET("/products", productHandler.GetProducts)
 	// e.GET("/products/:id", productHandler.GetProduct)
 	// e.GET("/orders", orderHandler.GetOrders)
 
