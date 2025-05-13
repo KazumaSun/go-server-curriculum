@@ -31,3 +31,18 @@ func (r *ProductRepository) GetProductByID(id uint) (*domain.Product, error) {
 	}
 	return &product, nil
 }
+
+// CreateProduct は新しい商品を作成
+func (r *ProductRepository) CreateProduct(product *domain.Product) error {
+	return r.db.Create(product).Error
+}
+
+// UpdateProduct は既存の商品を更新
+func (r *ProductRepository) UpdateProduct(product *domain.Product) error {
+	return r.db.Save(product).Error
+}
+
+// DeleteProduct は商品を削除
+func (r *ProductRepository) DeleteProduct(id uint) error {
+	return r.db.Delete(&domain.Product{}, id).Error
+}

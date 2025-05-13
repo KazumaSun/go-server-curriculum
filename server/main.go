@@ -34,7 +34,10 @@ func main() {
 	e := echo.New()
 	e.GET("/", healthHandler.HealthCheck)
 	e.GET("/products", productHandler.GetProducts)
-	// e.GET("/products/:id", productHandler.GetProduct)
+	e.GET("/products/:id", productHandler.GetProduct)
+	e.POST("/products", productHandler.CreateProduct)
+	e.PUT("/products/:id", productHandler.UpdateProduct)
+	e.DELETE("/products/:id", productHandler.DeleteProduct)
 	// e.GET("/orders", orderHandler.GetOrders)
 
 	// サーバー起動
