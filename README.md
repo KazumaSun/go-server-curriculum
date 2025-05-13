@@ -58,3 +58,36 @@ curl -X DELETE http://localhost:8080/products/1
    ```
 
 3. 上記のcurlコマンドを使用してAPIをテストします。
+
+## 最終課題: お客ごとの合計金額を算出するAPI
+
+### 概要
+この課題では、カスタマー情報（名前、席番号）を管理し、各お客が注文した商品の合計金額を算出するAPIを実装します。
+
+### エンドポイント
+- **GET /customers/:id/total**  
+  指定したカスタマーIDに基づき、注文の合計金額を返します。
+
+### 実行例
+```bash
+curl -X GET http://localhost:8080/customers/1/total
+```
+
+### レスポンス例
+```json
+{
+  "customer": {
+    "id": 1,
+    "name": "John Doe",
+    "seat": "A1",
+    "orders": [
+      {
+        "id": 1,
+        "product_id": 1,
+        "quantity": 2
+      }
+    ]
+  },
+  "total": 200
+}
+```
