@@ -16,6 +16,9 @@ services:
       - ./server:/app
     working_dir: /app
     command: "./start.sh"
+    depends_on:
+      db:
+        condition: service_healthy
     networks:
       - app_network
 
@@ -36,6 +39,12 @@ services:
     networks:
       - app_network
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "user", "-ppassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
 networks:
   app_network:

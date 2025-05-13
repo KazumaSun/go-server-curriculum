@@ -1,13 +1,13 @@
 package handler
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
 	"go-server-curriculum/domain"
 	"go-server-curriculum/usecase"
 
-	"github.com/gorilla/mux"
 	"github.com/labstack/echo/v4"
 )
 
@@ -31,7 +31,7 @@ func (h *ProductHandler) GetProducts(c echo.Context) error {
 
 // GetProduct はIDで商品を取得
 func (h *ProductHandler) GetProduct(c echo.Context) error {
-	idParam := mux.Vars(c.Request())["id"]
+	idParam := c.Param("id")
 	id, err := strconv.Atoi(idParam)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": "Invalid product ID"})
@@ -60,7 +60,7 @@ func (h *ProductHandler) CreateProduct(c echo.Context) error {
 
 // UpdateProduct は既存の商品を更新
 func (h *ProductHandler) UpdateProduct(c echo.Context) error {
-	idParam := mux.Vars(c.Request())["id"]
+	idParam := c.Param("id")
 	id, err := strconv.Atoi(idParam)
 	if err != nil {
 			return c.JSON(http.StatusBadRequest, map[string]string{"error": "Invalid product ID"})
@@ -80,7 +80,8 @@ func (h *ProductHandler) UpdateProduct(c echo.Context) error {
 
 // DeleteProduct は商品を削除
 func (h *ProductHandler) DeleteProduct(c echo.Context) error {
-	idParam := mux.Vars(c.Request())["id"]
+	idParam := c.Param("id")
+	fmt.Println("idParam:", idParam)
 	id, err := strconv.Atoi(idParam)
 	if err != nil {
 			return c.JSON(http.StatusBadRequest, map[string]string{"error": "Invalid product ID"})
