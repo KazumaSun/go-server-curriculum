@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce管理システム</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>eCommerce管理システム</h1>
+            <nav>
+                <button id="products-tab" class="tab-button active">商品管理</button>
+                <button id="customers-tab" class="tab-button">顧客管理</button>
+                <button id="orders-tab" class="tab-button">注文管理</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- 商品管理セクション -->
+            <section id="products-section" class="section active">
+                <h2>商品管理</h2>
+                <div class="form-container">
+                    <h3>商品追加</h3>
+                    <form id="product-form">
+                        <div class="form-group">
+                            <label for="product-name">商品名:</label>
+                            <input type="text" id="product-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-price">価格:</label>
+                            <input type="number" id="product-price" name="price" required>
+                        </div>
+                        <button type="submit">商品追加</button>
+                    </form>
+                </div>
+                <div class="table-container">
+                    <h3>商品一覧</h3>
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>商品名</th>
+                                <th>価格</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 顧客管理セクション -->
+            <section id="customers-section" class="section">
+                <h2>顧客管理</h2>
+                <div class="form-container">
+                    <h3>顧客追加</h3>
+                    <form id="customer-form">
+                        <div class="form-group">
+                            <label for="customer-name">顧客名:</label>
+                            <input type="text" id="customer-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-seat">座席:</label>
+                            <input type="text" id="customer-seat" name="seat" required>
+                        </div>
+                        <button type="submit">顧客追加</button>
+                    </form>
+                </div>
+                <div class="table-container">
+                    <h3>顧客一覧</h3>
+                    <table id="customers-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>顧客名</th>
+                                <th>座席</th>
+                                <th>合計金額</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 注文管理セクション -->
+            <section id="orders-section" class="section">
+                <h2>注文管理</h2>
+                <div class="form-container">
+                    <h3>注文追加</h3>
+                    <form id="order-form">
+                        <div class="form-group">
+                            <label for="order-product">商品:</label>
+                            <select id="order-product" name="product_id" required>
+                                <option value="">商品を選択</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-customer">顧客:</label>
+                            <select id="order-customer" name="customer_id" required>
+                                <option value="">顧客を選択</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-quantity">数量:</label>
+                            <input type="number" id="order-quantity" name="quantity" required min="1">
+                        </div>
+                        <button type="submit">注文追加</button>
+                    </form>
+                </div>
+                <div class="table-container">
+                    <h3>注文一覧</h3>
+                    <table id="orders-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>商品ID</th>
+                                <th>顧客ID</th>
+                                <th>数量</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 編集モーダル -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modal-title">編集</h3>
+            <form id="edit-form">
+                <div id="edit-fields"></div>
+                <button type="submit">更新</button>
+                <button type="button" id="cancel-edit">キャンセル</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

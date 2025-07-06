@@ -22,6 +22,15 @@ services:
     networks:
       - app_network
 
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    networks:
+      - app_network
+
   db:
     image: mysql:8
     restart: always
