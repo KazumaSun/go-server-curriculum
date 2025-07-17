@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS orders (
 );
 
 -- 初期データを挿入
-INSERT INTO products (name, price) VALUES ('商品A', 1000), ('商品B', 2000);
+INSERT INTO products (name, price) VALUES ('productA', 1000), ('productB', 2000);
 INSERT INTO orders (product_id, quantity) VALUES (1, 2), (2, 1);
