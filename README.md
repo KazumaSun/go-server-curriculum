@@ -49,12 +49,12 @@ curl -X DELETE http://localhost:8080/products/1
 ## 実行方法
 1. Dockerイメージをビルドします。
    ```bash
-   docker build -t go-server-curriculum .
+   docker compose build
    ```
 
 2. コンテナを起動します。
    ```bash
-   docker run -p 8080:8080 go-server-curriculum
+   docker compose up
    ```
 
 3. 上記のcurlコマンドを使用してAPIをテストします。
